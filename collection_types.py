@@ -22,3 +22,6 @@ class CollectionTypes(Scene):
         self.add(linear_lines)
         self.play(Write(linear_label))
         self.wait(3)
+
+        # Remove the linear group
+        self.play(FadeOut(linear_group), FadeOut(linear_label), FadeOut(linear_lines))
