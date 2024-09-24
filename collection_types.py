@@ -16,7 +16,7 @@ class CollectionTypes(Scene):
         # Arrage the circles in a row
         linear_group.arrange(RIGHT, buff=0.5)
         # Label
-        linear_label = Text("Linear", color=WHITE).next_to(circle, UP*2)
+        linear_label = Text("Linear", color=WHITE).next_to(circle, UP*2.5)
         # Lines between circles
         linear_lines = VGroup(*[Line(linear_group[i].get_right(), linear_group[i+1].get_left(), color=WHITE) for i in range(4)])
 
@@ -114,3 +114,23 @@ class CollectionTypes(Scene):
 
         # Remove the graph group
         self.play(FadeOut(nodes_v2), FadeOut(lines_v2), FadeOut(graph_label))
+
+        ## UnorderedGroup
+        unordered_group = VGroup(*[circle.copy() for _ in range(5)])
+        # Arrage the circles in a unordered way
+        unordered_group[0].move_to(UP * 2 + LEFT * 1.2)
+        unordered_group[1].move_to(UP * 1 + RIGHT * 2.5)
+        unordered_group[2].move_to(ORIGIN + LEFT * 2)
+        unordered_group[3].move_to(ORIGIN + RIGHT * 1)
+        unordered_group[4].move_to(DOWN * 2 + RIGHT * 2)
+
+        # Label
+        unordered_label = Text("Unordered", color=WHITE).next_to(circle, UP*10)
+
+        self.add(unordered_group)
+        self.play(Write(unordered_label))
+        self.wait(2)
+
+        # Remove the unordered group
+        self.play(FadeOut(unordered_group), FadeOut(unordered_label))
+
